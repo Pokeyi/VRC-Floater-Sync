@@ -1,2 +1,2 @@
 # VRC-Floater-Sync
-UTC-synced bobbing and rocking for VRChat:
+UTC-synced bobbing and rocking for VRChat.
