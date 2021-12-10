@@ -1,5 +1,5 @@
 # VRC-Floater-Sync [![Downloads](https://img.shields.io/github/downloads/Pokeyi/VRC-Floater-Sync/total?logo=github)](https://github.com/Pokeyi/VRC-Floater-Sync/releases)
-UTC-synced bobbing and rocking motion for floating objects VRChat.
+UTC-synced bobbing and rocking motion for floating objects in VRChat.
 
 ![Floater Sync](P_FloaterSync.png)
 
