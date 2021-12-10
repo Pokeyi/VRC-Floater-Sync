@@ -31,29 +31,25 @@ Make sure you have already imported the VRChat Worlds SDK and UdonSharp into you
 
 ## Features
 The main features of Floater Sync.
-- 
+- TEMPLATE
 
 All of the following properties have hover-tooltips in the Unity Inspector window.
 
-### Desc
-Desc
-- Desc
+### TEMPLATE
+TEMPLATE
+- TEMPLATE
 
-### Desc
-Desc
-- Desc
+### TEMPLATE
+TEMPLATE
+- TEMPLATE
 
-### Desc
-Desc
-- Desc
-
-### Desc
-Desc
-- Desc
+### TEMPLATE
+TEMPLATE
+- TEMPLATE
 
 ### Use Case Examples
-Desc
-- Desc
+TEMPLATE
+- TEMPLATE
 
 ### Known Issues
 1. Sometimes the Unity Console will throw a null-reference error when the Size field of an array is active and the objects aren't dropped in yet. I believe this is an issue with UdonSharp and/or the VRChat SDK that is being resolved in an upcoming release. You can safely hide these errors in the Unity Console to stop them from happening, they do not effect the behaviour in any way during runtime.
