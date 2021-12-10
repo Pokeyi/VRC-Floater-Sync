@@ -1,10 +1,10 @@
 # VRC-Floater-Sync [![Downloads](https://img.shields.io/github/downloads/Pokeyi/VRC-Floater-Sync/total?logo=github)](https://github.com/Pokeyi/VRC-Floater-Sync/releases)
-UTC-synced bobbing and rocking for VRChat.
+UTC-synced bobbing and rocking for floating objects VRChat.
 
 ![Floater Sync](P_FloaterSync.png)
 
 ## Overview
-VRC Floater Sync is a single configurable UdonSharp behaviour that can be used to manage synced bobbing and rocking motions for multiple game objects.
+VRC Floater Sync is a single configurable UdonSharp behaviour that can be used to manage synced bobbing and rocking motions for multiple floating game objects.
 
 It is intended to be efficient and relatively simple to use without the need for any additional editor scripts or dependencies outside of UdonSharp. All configuration can be done within the Unity Inspector window without the need for any programming, Udon, or SDK knowledge. That said, the source code is cleanly-organized and commented in the hopes of also being a good learning tool.
 
@@ -26,18 +26,20 @@ Make sure you have already imported the VRChat Worlds SDK and UdonSharp into you
 - Create and select an empty game object and add the P_FloaterSync behaviour via the Unity Inspector window or 'Component > Pokeyi.VRChat > P.VRC Floater Sync' toolbar menu.
 - Click the 'Convert to UdonBehaviour' button if prompted.
 - Click the small triangle next to Floater Objects to expand the array.
-- If the Size field is left at 0, you can lock the Inspector tab and drag the game object(s) you want to manage into the Floater Objects label to add them all to the array at once. You can alternatively enter a Size value and drag them in one at a time. (See: Known Issues [#1](https://github.com/Pokeyi/VRC-Floater-Sync#known-issues))
+- If the Size field is left at 0, you can lock the Inspector tab and drag the game object(s) you want to manage into the Floater Objects label to add them all to the array at once. You can alternatively enter a Size value and drag them in one at a time. (See: Known Issues [#1](#known-issues))
 - Configure the rest of the behaviour's properties in the Inspector window as you see fit. Each of these is explained in detail further below.
 
 ## Features
 The main features of Floater Sync.
-- TEMPLATE
+- Floater Objects - The array of game objects you've selected to be modified by this behaviour.
+- Template
 
 All of the following properties have hover-tooltips in the Unity Inspector window.
 
-### TEMPLATE
-TEMPLATE
-- TEMPLATE
+### Template Objects
+The array of game objects you've selected to be modified by this behaviour. Multiple can be added.
+- There is no limit imposed on the number of game objects you can add.
+- See [Setup](#setup) above for tips on placing game objects into the array via the Unity Inspector window.
 
 ### TEMPLATE
 TEMPLATE
