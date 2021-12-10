@@ -1,5 +1,5 @@
 # VRC-Floater-Sync [![Downloads](https://img.shields.io/github/downloads/Pokeyi/VRC-Floater-Sync/total?logo=github)](https://github.com/Pokeyi/VRC-Floater-Sync/releases)
-UTC-synced bobbing and rocking for floating objects VRChat.
+UTC-synced bobbing and rocking motion for floating objects VRChat.
 
 ![Floater Sync](P_FloaterSync.png)
 
@@ -26,35 +26,42 @@ Make sure you have already imported the VRChat Worlds SDK and UdonSharp into you
 - Create and select an empty game object and add the P_FloaterSync behaviour via the Unity Inspector window or 'Component > Pokeyi.VRChat > P.VRC Floater Sync' toolbar menu.
 - Click the 'Convert to UdonBehaviour' button if prompted.
 - Click the small triangle next to Floater Objects to expand the array.
-- If the Size field is left at 0, you can lock the Inspector tab and drag the game object(s) you want to manage into the Floater Objects label to add them all to the array at once. You can alternatively enter a Size value and drag them in one at a time. (See: Known Issues [#1](#known-issues))
+- If the Size field is left at 0, you can lock the Inspector tab and drag the game object(s) you want to manage into the Floater Objects label to add them all to the array at once. You can alternatively enter a Size value and drag them in one at a time.
 - Configure the rest of the behaviour's properties in the Inspector window as you see fit. Each of these is explained in detail further below.
+- *DO NOT* use a separate copy of this behaviour for every floating object, it is meant to control multiple objects with a single behaviour.
 
 ## Features
 The main features of Floater Sync.
 - Floater Objects - The array of game objects you've selected to be modified by this behaviour.
-- Template
+- Motion Properties - Properties governing height bobbing and rotational pitch and roll motions.
+- Options - Additional options for offset grouping and parent functionality.
+- UTC-Sync - The method used for syncing motions to all players. This is done automatically.
 
 All of the following properties have hover-tooltips in the Unity Inspector window.
 
-### Template Objects
+### Floater Objects
 The array of game objects you've selected to be modified by this behaviour. Multiple can be added.
+- *DO NOT* use a separate copy of this behaviour for every floating object, it is meant to control multiple objects with a single behaviour.
 - There is no limit imposed on the number of game objects you can add.
 - See [Setup](#setup) above for tips on placing game objects into the array via the Unity Inspector window.
 
-### TEMPLATE
-TEMPLATE
-- TEMPLATE
+### Motion Properties
+The types and amounts of motion smoothly blended and applied simultaneously to each floater object per cycle.
+- Bob Speed - Speed of up-down bobbing motion.
+- Bob Distance - Distance objects will move in each up-down bobbing direction.
+- Pitch Speed - Speed of forward-back pitch motion.
+- Pitch Degrees - Angle objects will rotate in each forward-back pitch direction.
+- Roll Speed - Speed of left-right roll motion.
+- Roll Degrees - Angle objects will rotate in each left-right roll direction.
 
-### TEMPLATE
-TEMPLATE
-- TEMPLATE
+### Options
+Additional options for offset grouping and parent functionality.
+- Time Offset - Offset in seconds if you want different object groups synced separately.
+- Parent Rotation - Whether you want the floating objects to match the base rotation of their parent object.
 
-### Use Case Examples
-TEMPLATE
-- TEMPLATE
-
-### Known Issues
-1. Sometimes the Unity Console will throw a null-reference error when the Size field of an array is active and the objects aren't dropped in yet. I believe this is an issue with UdonSharp and/or the VRChat SDK that is being resolved in an upcoming release. You can safely hide these errors in the Unity Console to stop them from happening, they do not effect the behaviour in any way during runtime.
+### UTC-Sync
+UTC-Sync is a method of syncing motions or events for all players without the use of networking by aligning them with Universal Time as a shared frame of refence.
+- The only caveat to this form of syncing is that each player's local machine must have had its clock [synchronized](https://youtu.be/VZBxG6v0gYQ). This is usually done automatically by Windows. The latest synchronization can be checked in your Date & Time Settings, but it should be very rare that this would need to be worried about manually.
 
 ## Credit & Support
 Please credit me as Pokeyi if you use my work. I would also love to see your creations that make use of it if you're inclined to share. This and [related projects](https://github.com/Pokeyi/VRC-Omni-Action) at release have involved over three months of solid work and self-education as I strive for an opportunity to change careers and make a better life for myself. If you find value in my work, please consider supporting me, I appreciate it more than you can imagine!
