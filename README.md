@@ -33,7 +33,7 @@ Make sure you have already imported the VRChat Worlds SDK and UdonSharp into you
 ## Features
 The main features of Floater Sync.
 - Floater Objects - The array of game objects you've selected to be modified by this behaviour.
-- Motion Properties - Properties governing height bobbing and rotational pitch and roll motions.
+- Motion Properties - Properties governing positional bobbing and rotational pitch and roll motions.
 - Options - Additional options for offset grouping and parent functionality.
 - UTC-Sync - The method used for syncing motions to all players. This is done automatically.
 
@@ -47,8 +47,9 @@ The array of game objects you've selected to be modified by this behaviour. Mult
 
 ### Motion Properties
 The types and amounts of motion smoothly blended and applied simultaneously to each floater object per cycle.
-- Bob Speed - Speed of up-down bobbing motion.
-- Bob Distance - Distance objects will move in each up-down bobbing direction.
+- Bob Speed - Speed of positional bobbing motion.
+- Bob Distance - Distance objects will move in each positional bobbing direction.
+- Bob Axis X/Y/Z - Whether to apply positional motion to each axis. Choosing multiple will smoothly combine their movements.
 - Pitch Speed - Speed of forward-back pitch motion.
 - Pitch Degrees - Angle objects will rotate in each forward-back pitch direction.
 - Roll Speed - Speed of left-right roll motion.
@@ -57,11 +58,18 @@ The types and amounts of motion smoothly blended and applied simultaneously to e
 ### Options
 Additional options for offset grouping and parent functionality.
 - Time Offset - Offset in seconds if you want different object groups synced separately.
-- Parent Rotation - Whether you want the floating objects to match the base rotation of their parent object.
+- Match Parent Height - Whether you want the floating objects to match the base height of their parent object.
+- Match Parent Rotation - Whether you want the floating objects to match the base rotation of their parent object.
 
 ### UTC-Sync
 UTC-Sync is a method of syncing motions or events for all players without the use of networking by aligning them with Universal Time as a shared frame of reference.
 - The only caveat to this form of syncing is that each player's local machine must have had its clock [synchronized](https://youtu.be/VZBxG6v0gYQ). This is usually done automatically by Windows. The latest synchronization can be checked in your Date & Time Settings, but it should be very rare that this would need to be worried about manually.
+
+### Use Case Examples
+As of the v1.1.0 update, there are a few more potential use cases for this behaviour.
+- Objects bobbing together at a matched height-level, as if they are floating in water.
+- Objects floating at different offset heights as if they are hovering in the air.
+- Objects moving smoothly on the X or Z axis instead of bobbing up and down, like for moving jumping platforms.
 
 ## Credit & Support
 Please credit me as Pokeyi if you use my work. I would also love to see your creations that make use of it if you're inclined to share. This and [related projects](https://github.com/Pokeyi/pokeyi.github.io#my-projects) at release have involved over three months of solid work and self-education as I strive for an opportunity to change careers and make a better life for myself. If you find value in my work, please consider supporting me, I appreciate it more than you can imagine!
