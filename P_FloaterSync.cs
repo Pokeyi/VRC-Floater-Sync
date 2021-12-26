@@ -19,34 +19,46 @@ namespace Pokeyi.UdonSharp
         [Space]
         [Tooltip("Floating game objects.")]
         [SerializeField] private GameObject[] floaterObjects;
-        [Tooltip("Speed of up-down bobbing motion.")]
+        [Header("Positional:")]
+        [Tooltip("Speed of positional bobbing motion.")]
         [SerializeField] private float bobSpeed = 0.5F;
-        [Tooltip("Distance objects will move in each up-down bobbing direction.")]
+        [Tooltip("Distance objects will move in each positional bobbing direction.")]
         [SerializeField] private float bobDistance = 0.125F;
+        [Tooltip("Whether to apply positional motion to the X axis.")]
+        [SerializeField] private bool bobAxisX = false;
+        [Tooltip("Whether to apply positional motion to the Y axis.")]
+        [SerializeField] private bool bobAxisY = false;
+        [Tooltip("Whether to apply positional motion to the Z axis.")]
+        [SerializeField] private bool bobAxisZ = false;
+        [Header("Rotational:")]
         [Tooltip("Speed of forward-back pitch motion.")]
         [SerializeField] private float pitchSpeed = 0.5F;
         [Tooltip("Angle objects will rotate in each forward-back pitch direction.")]
-        [SerializeField] [Range(0F, 180F)] private float pitchDegrees = 2.5F;
+        [SerializeField] private float pitchDegrees = 2.5F;
         [Tooltip("Speed of left-right roll motion.")]
         [SerializeField] private float rollSpeed = 0.5F;
         [Tooltip("Angle objects will rotate in each left-right roll direction.")]
-        [SerializeField] [Range(0F, 180F)] private float rollDegrees = 2.5F;
+        [SerializeField] private float rollDegrees = 2.5F;
+        [Header("Modifiers:")]
         [Tooltip("Time offset if you want object groups synced separately.")]
         [SerializeField] private float timeOffset = 0F;
+        [Tooltip("Whether to match base height of parent objects.")]
+        [SerializeField] private bool matchParentHeight;
         [Tooltip("Whether to match base rotation of parent objects.")]
-        [SerializeField] private bool parentRotation;
+        [SerializeField] private bool matchParentRotation;
 
         private Quaternion[] startRot; // Original start rotation of floater objects.
-        private float[] startHeight; // Original start height of floater objects.
+        private Vector3[] startPos; // Original start position of floater objects.
 
         public void Start()
         {   // Record start rotation and height for all floater objects:
+            if (floaterObjects == null) return;
             startRot = new Quaternion[floaterObjects.Length];
-            startHeight = new float[floaterObjects.Length];
+            startPos = new Vector3[floaterObjects.Length];
             for (int i = 0; i < floaterObjects.Length; i++) if (floaterObjects[i] != null)
                 {
                     startRot[i] = floaterObjects[i].transform.rotation;
-                    startHeight[i] = floaterObjects[i].transform.position.y;
+                    startPos[i] = floaterObjects[i].transform.position;
                 }
         }
 
@@ -60,11 +72,15 @@ namespace Pokeyi.UdonSharp
                 {
                     if (floaterObjects[i].transform.parent != null)
                     {
-                        startHeight[i] = floaterObjects[i].transform.parent.position.y;
-                        if (parentRotation) startRot[i] = floaterObjects[i].transform.parent.rotation;
+                        if (matchParentHeight) startPos[i].y = floaterObjects[i].transform.parent.position.y;
+                        if (matchParentRotation) startRot[i] = floaterObjects[i].transform.parent.rotation;
                     }
-                    floaterObjects[i].transform.position = new Vector3(floaterObjects[i].transform.position.x, startHeight[i] + (float)bob, floaterObjects[i].transform.position.z);
-                    floaterObjects[i].transform.rotation = startRot[i] * Quaternion.AngleAxis((float)roll, Vector3.forward) * Quaternion.AngleAxis((float)pitch, Vector3.left);
+                    Vector3 setPos = floaterObjects[i].transform.position;
+                    if (bobAxisX) setPos.x = startPos[i].x + (float)bob;
+                    if (bobAxisY) setPos.y = startPos[i].y + (float)bob;
+                    if (bobAxisZ) setPos.z = startPos[i].z + (float)bob;
+                    Quaternion setRot = startRot[i] * Quaternion.AngleAxis((float)roll, Vector3.forward) * Quaternion.AngleAxis((float)pitch, Vector3.left);
+                    floaterObjects[i].transform.SetPositionAndRotation(setPos, setRot);
                 }
         }
     }
