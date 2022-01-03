@@ -62,7 +62,7 @@ namespace Pokeyi.UdonSharp
                 }
         }
 
-        public void LateUpdate()
+        public void Update()
         {   // Convert UTC ticks and align decimal spaces to retrieve time for sine wave calculations, animate objects per frame:
             double utcTime = Convert.ToDouble(DateTime.UtcNow.Ticks) / 1E+07D;
             double bob = Math.Sin((utcTime + timeOffset) * bobSpeed) * bobDistance;
