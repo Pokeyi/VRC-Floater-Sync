@@ -64,11 +64,7 @@ namespace Pokeyi.UdonSharp
 
         public void Update()
         {   // Convert UTC ticks and align decimal spaces to retrieve time for sine wave calculations, animate objects per frame:
-            double utcTime = Convert.ToDouble(DateTime.UtcNow.Ticks) / 1E+07D;
-            double bob = Math.Sin((utcTime + timeOffset) * bobSpeed) * bobDistance;
-            double pitch = Math.Sin((utcTime + timeOffset) * pitchSpeed) * pitchDegrees;
-            double roll = Math.Sin((utcTime + timeOffset) * rollSpeed) * rollDegrees;
-            for (int i = 0; i < floaterObjects.Length; i++) if (floaterObjects[i] != null)
+            for (int i = 0; i < floaterObjects.Length; i++) if ((floaterObjects[i] != null) && (floaterObjects[i].activeSelf))
                 {
                     if (floaterObjects[i].transform.parent != null)
                     {
@@ -76,6 +72,10 @@ namespace Pokeyi.UdonSharp
                         if (matchParentRotation) startRot[i] = floaterObjects[i].transform.parent.rotation;
                     }
                     Vector3 setPos = floaterObjects[i].transform.position;
+                    double utcTime = Convert.ToDouble(DateTime.UtcNow.Ticks) / 1E+07D;
+                    double bob = Math.Sin((utcTime + timeOffset) * bobSpeed) * bobDistance;
+                    double pitch = Math.Sin((utcTime + timeOffset) * pitchSpeed) * pitchDegrees;
+                    double roll = Math.Sin((utcTime + timeOffset) * rollSpeed) * rollDegrees;
                     if (bobAxisX) setPos.x = startPos[i].x + (float)bob;
                     if (bobAxisY) setPos.y = startPos[i].y + (float)bob;
                     if (bobAxisZ) setPos.z = startPos[i].z + (float)bob;
