@@ -3,6 +3,9 @@ UTC-synced bobbing and rocking motion for floating objects in VRChat.
 
 ![Floater Sync](P_FloaterSync.png)
 
+### VRChat Creator Companion App (VCC)
+***This project can now be imported through VCC with the [Pokeyi's Udon Tools](https://github.com/Pokeyi/vpm-packages#vpm-packages) VPM package.***
+
 ## Overview
 VRC Floater Sync is a single configurable UdonSharp behaviour that can be used to manage synced bobbing and rocking motions for multiple floating game objects simultaneously synchronized to all players without networking.
 
